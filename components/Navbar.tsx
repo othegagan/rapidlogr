@@ -1,5 +1,6 @@
 import React from "react";
 import { ModeToggle } from "./ui/theme-toggle-button";
+import Link from "next/link";
 
 const Navbar = () => {
     return (
@@ -7,7 +8,7 @@ const Navbar = () => {
             <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="container flex h-14 items-center justify-between">
                     <div className="mr-4 flex">
-                        <a
+                        <Link
                             className="mr-6 flex items-center space-x-2"
                             href="/">
                             <svg
@@ -42,24 +43,24 @@ const Navbar = () => {
                             <span className="font-bold sm:inline-block">
                                 rapidlogr
                             </span>
-                        </a>
+                        </Link>
                         <nav className=" hidden md:flex items-center space-x-6 text-sm font-medium">
-                            <a
+                            <Link
                                 className="transition-colors hover:text-foreground/80 text-foreground/60"
                                 href="/docs">
                                 Documentation
-                            </a>
+                            </Link>
 
-                            <a
+                            <Link
                                 className="hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
-                                href="https://github.com/shadcn-ui/ui">
+                                href="https://github.com/othegagan/rapidlogr">
                                 GitHub
-                            </a>
+                            </Link>
                         </nav>
                     </div>
 
                     <div className="hidden md:flex flex-1 items-center justify-between space-x-2 md:justify-end mr-3">
-                        <div className="w-full flex-1 md:w-auto md:flex-none relative">
+                        <div className="w-full flex-1 md:w-auto md:flex-none relative hidden">
                             <input
                                 className="inline-flex items-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
                                 placeholder="Seach"
