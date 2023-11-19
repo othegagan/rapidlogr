@@ -143,11 +143,29 @@ export const columns: ColumnDef<LogData>[] = [
         accessorKey: "commit",
     },
     {
-        header: "Time",
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => {
+                        column.toggleSorting(column.getIsSorted() === "asc");
+                    }}>
+                    Time
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            );
+        },
         accessorKey: "timestamp",
         cell: ({ row }) => {
             const timestamp = row.getValue("timestamp");
-            const formatted = new Date(timestamp as string).toLocaleString();
+
+            // Format the date as "dd mmm yyyy"
+            const options = { day: "2-digit", month: "short", year: "numeric" };
+            const formatted = new Date(timestamp as string).toLocaleDateString(
+                undefined,
+                options as Intl.DateTimeFormatOptions
+            );
+
             return <div className="font-medium">{formatted}</div>;
         },
     },

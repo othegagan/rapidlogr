@@ -52,6 +52,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../ui/select";
+import Searchbar from "../Searchbar";
 
 declare module "@tanstack/table-core" {
     interface FilterFns {
@@ -137,21 +138,10 @@ export function LogsDataTable<TData, TValue>({
 
     return (
         <div>
-            {/* input */}
+            {/* Filters*/}
             <div className="flex items-center py-4">
-                <DebouncedInput
-                    value={globalFilter ?? ""}
-                    onChange={(value) => {
-                        setGlobalFilter(String(value));
-                        console.log(globalFilter);
-                    }}
-                    placeholder="Search..."
-                />
-
-                {/* <Button onClick={() => downloadToExcel()} className="ml-4">
-                    Export to Excel
-                </Button> */}
-
+                <Searchbar />
+                
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button
@@ -217,7 +207,9 @@ export function LogsDataTable<TData, TValue>({
                             table.getRowModel().rows.map((row) => (
                                 <TableRow key={row.id}>
                                     {row.getVisibleCells().map((cell) => (
-                                        <TableCell key={cell.id} className="whitespace-nowrap">
+                                        <TableCell
+                                            key={cell.id}
+                                            className="whitespace-nowrap">
                                             {flexRender(
                                                 cell.column.columnDef.cell,
                                                 cell.getContext()
@@ -268,32 +260,32 @@ export function LogsDataTable<TData, TValue>({
                     </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                        <p className="whitespace-nowrap text-sm font-medium">
-                            Rows per page
-                        </p>
-                        <Select
-                            value={`${table.getState().pagination.pageSize}`}
-                            onValueChange={(value) => {
-                                table.setPageSize(Number(value));
-                            }}>
-                            <SelectTrigger className="h-8 w-[70px]">
-                                <SelectValue
-                                    placeholder={
-                                        table.getState().pagination.pageSize
-                                    }
-                                />
-                            </SelectTrigger>
-                            <SelectContent side="top" className="w-[70px]">
-                                {[10, 20, 30, 40, 50].map((pageSize) => (
-                                    <SelectItem
-                                        key={pageSize}
-                                        value={`${pageSize}`}>
-                                        {pageSize}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
+                    <p className="whitespace-nowrap text-sm font-medium">
+                        Rows per page
+                    </p>
+                    <Select
+                        value={`${table.getState().pagination.pageSize}`}
+                        onValueChange={(value) => {
+                            table.setPageSize(Number(value));
+                        }}>
+                        <SelectTrigger className="h-8 w-[70px]">
+                            <SelectValue
+                                placeholder={
+                                    table.getState().pagination.pageSize
+                                }
+                            />
+                        </SelectTrigger>
+                        <SelectContent side="top" className="w-[70px]">
+                            {[10, 20, 30, 40, 50].map((pageSize) => (
+                                <SelectItem
+                                    key={pageSize}
+                                    value={`${pageSize}`}>
+                                    {pageSize}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
                 <div className=" flex items-center gap-3">
                     <Button
                         size="sm"
