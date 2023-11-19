@@ -54,7 +54,7 @@ const Searchbar = () => {
         pushQuery({ search });
     };
 
-    const handleDateSelect = (selectedDate: DateRange) => {
+    const handleDateSelect = (selectedDate: any) => {
         const searchParams = {
             from: selectedDate.from
                 ? format(selectedDate.from, "yyyy-MM-dd")
@@ -67,7 +67,7 @@ const Searchbar = () => {
 
         setDate(selectedDate);
     };
-
+    
     const reset = () => {
         const search = undefined;
         const level = "all";
@@ -241,18 +241,17 @@ const Searchbar = () => {
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
-// eslint-disable-next-line 
-                            @typescript-eslint/ban-ts-comment
-// @ts-ignore
-  <Calendar
-    initialFocus
-    mode="range"
-    defaultMonth={date?.from}
-    selected={date}
-    onSelect={handleDateSelect}
-    numberOfMonths={2}
-  />
-</PopoverContent>
+                             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                            {/* @ts-ignore */}
+                            <Calendar
+                                initialFocus
+                                mode="range"
+                                defaultMonth={date?.from}
+                                selected={date}
+                                onSelect={handleDateSelect}
+                                numberOfMonths={2}
+                            />
+                        </PopoverContent>
                     </Popover>
                 </div>
 
