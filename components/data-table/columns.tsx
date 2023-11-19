@@ -8,7 +8,6 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -159,7 +158,6 @@ export const columns: ColumnDef<LogData>[] = [
         cell: ({ row }) => {
             const timestamp = row.getValue("timestamp");
 
-            // Format the date as "dd mmm yyyy"
             const options = { day: "2-digit", month: "short", year: "numeric" };
             const formatted = new Date(timestamp as string).toLocaleDateString(
                 undefined,

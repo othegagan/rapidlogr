@@ -4,16 +4,13 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Navbar from "@/components/Navbar";
+import Head from "./head";
+
 
 export const fontSans = FontSans({
     subsets: ["latin"],
     variable: "--font-sans",
 });
-
-export const metadata: Metadata = {
-    title: "RapidLogr",
-    description: "Next gen log ingestor",
-};
 
 export default function RootLayout({
     children,
@@ -22,9 +19,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+            <Head />
             <body
                 className={cn(
-                    "min-h-screen  font-sans antialiased",
+                    "min-h-screen flex flex-col font-sans antialiased",
                     fontSans.variable
                 )}>
                 {" "}
@@ -36,6 +34,7 @@ export default function RootLayout({
                     <Navbar />
 
                     {children}
+
                 </ThemeProvider>
             </body>
         </html>

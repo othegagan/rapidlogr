@@ -6,44 +6,38 @@ const Navbar = () => {
     return (
         <>
             <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container flex h-14 items-center justify-between">
+                <div className="container px-5 md:px-8 flex h-14 items-center justify-between">
                     <div className="mr-4 flex">
                         <Link
                             className="mr-6 flex items-center space-x-2"
                             href="/">
                             <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 256 256"
-                                className="h-6 w-6">
-                                <rect
-                                    width="256"
-                                    height="256"
-                                    fill="none"></rect>
-                                <line
-                                    x1="208"
-                                    y1="128"
-                                    x2="128"
-                                    y2="208"
-                                    fill="none"
-                                    stroke="currentColor"
+                                className="h-6 w-6 rotate-45"
+                                viewBox="0 0 24 24"
+                                fill="none">
+                                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                <g
+                                    id="SVGRepo_tracerCarrier"
                                     strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="16"></line>
-                                <line
-                                    x1="192"
-                                    y1="40"
-                                    x2="40"
-                                    y2="192"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="16"></line>
+                                    strokeLinejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    {" "}
+                                    <path
+                                        d="M21 12C21 16.9706 16.9706 21 12 21M21 12C21 7.02944 16.9706 3 12 3M21 12H17M12 21C7.02944 21 3 16.9706 3 12M12 21V17M3 12C3 7.02944 7.02944 3 12 3M3 12H7M12 3V7M12 12H12.01"
+                                        stroke="#000000"
+                                        strokeWidth="2.4"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"></path>{" "}
+                                </g>
                             </svg>
-                            <span className="font-bold sm:inline-block">
-                                rapidlogr
+
+                            <span className="font-bold text-lg sm:inline-block">
+                                RapidLogr
                             </span>
                         </Link>
+                    </div>
+
+                    <div className=" flex  items-center gap-6">
                         <nav className=" hidden md:flex items-center space-x-6 text-sm font-medium">
                             <Link
                                 className="transition-colors hover:text-foreground/80 text-foreground/60"
@@ -57,11 +51,8 @@ const Navbar = () => {
                                 GitHub
                             </Link>
                         </nav>
+                        <ModeToggle />
                     </div>
-
-                    
-
-                    <ModeToggle />
                 </div>
             </header>
         </>

@@ -8,9 +8,8 @@ dotenv.config();
 export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
-        // const level = searchParams.get('level') || '';
 
-        const logs = await getAllLogs("");
+        const logs = await getAllLogs({ level: "", search :"", from:"", to:""});
 
         return NextResponse.json({ logs });
     } catch (error: any) {

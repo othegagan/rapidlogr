@@ -45,6 +45,8 @@ export async function insertLogs(logs: any[]) {
 export async function getAllLogs(searchParams: any) {
     const search = searchParams.search || '';
     const level = searchParams.level || 'all';
+    const from = searchParams.from || undefined;
+    const to = searchParams.to || undefined;
 
     const pipeline: any[] = [];
 
@@ -67,11 +69,23 @@ export async function getAllLogs(searchParams: any) {
         });
     }
 
-    // Add level filter to the pipeline
+    // level filter
     if (level !== 'all') {
         pipeline.push({
             $match: {
                 level: level,
+            },
+        });
+    }
+
+    // date range filter 
+    if (from && to) {
+        pipeline.push({
+            $match: {
+                timestamp: {
+                    $gte: new Date(from),
+                    $lte: new Date(to),
+                },
             },
         });
     }
