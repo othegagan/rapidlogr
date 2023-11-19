@@ -10,9 +10,9 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url);
         // const level = searchParams.get('level') || '';
 
-        const logs = await getAllLogs();
+        const logs = await getAllLogs("");
 
-        return NextResponse.json({ logs }); 
+        return NextResponse.json({ logs });
     } catch (error: any) {
         console.error('Error processing GET request:', error);
         return NextResponse.json({ error: error.message }, { status: 400 });
