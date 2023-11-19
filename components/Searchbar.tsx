@@ -241,16 +241,16 @@ const Searchbar = () => {
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
-                           // eslint-disable-next-line
-                            <Calendar
-                                initialFocus
-                                mode="range"
-                                defaultMonth={date?.from}
-                                selected={date}
-                                onSelect={handleDateSelect}
-                                numberOfMonths={2}
-                            />
-                        </PopoverContent>
+  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+  <Calendar
+    initialFocus
+    mode="range"
+    defaultMonth={date?.from}
+    selected={date}
+    onSelect={handleDateSelect}
+    numberOfMonths={2}
+  />
+</PopoverContent>
                     </Popover>
                 </div>
 
